@@ -6,10 +6,32 @@
   </head>
   <body>
     <h1>Guessing Game</h1>
-    <p>Guess a number between 1-10</p>
-    <form>
-      <input type="text">
-      <input type="submit">
+    <p>Guess a number between 1-10.</p>
+    <p>You have made <span id="numGuesses">0</span> guess<span id="plural">es</span>.</p>
+    <form onsubmit="return check();">
+     <input type="text" id="guess" placeholder="Enter your number here">
+     <input type="submit" value="Guess">
     </form>
+    <script type="text/javascript">
+      var answer = Math.floor(Math.random() * 10) + 1;
+      var numGuesses = 0;
+      function check() {
+        var guess = document.getElementById("guess").value;
+        if (guess == answer) {
+          alert("You are correct");
+        } else {
+          if (numGuesses == 0) {
+            document.getElementById("plural").innerHTML = "";
+          } else {
+            document.getElementById("plural").innerHTML = "es";
+          }
+          numGuesses = numGuesses + 1;
+          document.getElementById("numGuesses").innerHTML = numGuesses;
+          alert("Incorrect");
+          document.getElementById("guess").value = "";
+        }
+        return false;
+      }
+    </script>
   </body>
 </html>

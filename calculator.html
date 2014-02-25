@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <p>Calculator: First field is a number, second an operator, third a number.</p>
+    <form onsubmit="return calculator();">
+      <input type="text" id="num1" placeholder="Number 1">
+      <input type="text" id="operator" placeholder="Operator (i.e. +, -, /, *)">
+      <input type="text" id="num2" placeholder="Number 2">
+      <input type="submit" value="Calculate!">
+    </form>
+    <p>Result <span id="result"></span></p>
+    <script type="text/javascript">
+      function calculator(){
+        var result;
+        var num1 = document.getElementById("num1").value;
+        var num2 = document.getElementById("num2").value;
+        var operator = document.getElementById("operator").value;
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+        if (operator == "+") {
+          result = num1 + num2;
+        } else if (operator == "-") {
+          result = num1 - num2;
+        } else if (operator == "/") {
+          result = num1 / num2;
+        } else if (operator == "*") {
+          result = num1 * num2;
+        } else {
+          alert("Please use a supported operator. (+, -, /, or *)");
+          document.getElementById("num1").value = "";
+          document.getElementById("num2").value = "";
+          document.getElementById("operator").value = "";
+          return false;
+        }
+      document.getElementById("result").innerHTML = result;
+      return false;
+      }
+    </script>
+  </body>
+</html>
+
